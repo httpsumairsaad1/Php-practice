@@ -1,0 +1,15 @@
+class Solution {
+    function numberOfAlternatingGroups($colors, $k) {
+        $n = count($colors);
+        $ans = 0;
+        $alternating = 1;
+
+        for ($i = 0; $i < $n + $k - 2; ++$i) {
+            $alternating = ($i > 0 && $colors[$i % $n] == $colors[($i - 1) % $n]) ? 1 : $alternating + 1;
+            if ($alternating >= $k)
+                ++$ans;
+        }
+
+        return $ans;
+    }
+}
